@@ -105,10 +105,12 @@
                echo $code.": ".$error_message."<br />";
          }
       }else{
+        echo "<div class='box'><div class='input-group'>";
         foreach ($errors as $error)
         {
-          echo "<div class='box'><div class='input-group'>".$error."<br /></div></div>";
+          echo $error."<br />";
         }
+        echo "</div></div>";
       }
   }
 ?>
