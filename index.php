@@ -54,17 +54,19 @@
   $containerName = "blockblobsenno";
 
   if (isset($_POST["Upload"])) {
-      $fileToUpload = "";
       $errors= array();
       $file_name = $_FILES['fileToUpload']['name'];
       $file_size =$_FILES['fileToUpload']['size'];
       $file_tmp =$_FILES['fileToUpload']['tmp_name'];
-      $file_type=$_FILES['fileToUpload']['type'];
       $file_ext=strtolower(pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION));
 
       $extensions= array("jpeg","jpg");
 
-      if(in_array($file_ext,$extensions)=== false){
+      if(!$file_name){
+        $errors[]="Please select image to upload.";
+      }
+
+      if($file_name && in_array($file_ext,$extensions)=== false){
          $errors[]="Extension not allowed, please choose a JPEG file.";
       }
 
